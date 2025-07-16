@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cards</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    
+  <h1 class="text-center" style="text-shadow: 2px 2px 3px rgb(129, 107, 33);">Find Your Drive</h1>
+  <div class="container my-5">
+    <div class="row justify-content-center g-5">
+
+      <!-- Mercedes Card -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/whitemercedes (2).avif" class="card-img-top" id="mercedesImg" alt="Mercedes">
+          <div class="card-body">
+            <h5 class="card-title">Mercedes-Benz AMG GT 63</h5>
+            <p class="card-text">A high-performance luxury sports sedan packed with power and class.</p>
+            <p class="fw-bold">Price: ₹3.65 Crore</p>
+            <div class="mb-3">
+              <label>Choose Color:</label><br>
+              <button class="btn btn-outline-warning btn-sm me-2 mercedes-color" data-color="yellow">Yellow</button>
+              <button class="btn btn-outline-primary btn-sm me-2 mercedes-color" data-color="blue">Blue</button>
+              <button class="btn btn-outline-dark btn-sm me-2 mercedes-color" data-color="black">Black</button>
+              <button class="btn btn-outline-secondary btn-sm me-2 mercedes-color" data-color="grey">Grey</button>
+            </div>
+            <button class="btn btn-primary w-100" id="mercedesCart">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audi Card -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/yellowaudi.webp" class="card-img-top" id="audiImg" alt="Audi">
+          <div class="card-body">
+            <h5 class="card-title">Audi R8</h5>
+            <p class="card-text">An iconic supercar blending performance and design.</p>
+            <p class="fw-bold">Price: ₹2.30 Crore</p>
+            <div class="mb-3">
+              <label>Choose Color:</label><br>
+              <button class="btn btn-outline-warning btn-sm me-2 audi-color" data-color="yellow">Yellow</button>
+              <button class="btn btn-outline-primary btn-sm me-2 audi-color" data-color="blue">Blue</button>
+              <button class="btn btn-outline-secondary btn-sm me-2 audi-color" data-color="grey">Grey</button>
+              <button class="btn btn-outline-secondary btn-sm text-dark audi-color" data-color="white">White</button>
+            </div>
+            <button class="btn btn-primary w-100" id="audiCart">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+ 
+<!-- Bmw card -->
+      <dv class="col-md-6 col-lg-4">
+        <div class="card" style="width: 18rem;">
+          <img src="./assets/blackbmw.webp" class="card-img-top" id="bmwImg" alt="Bmw">
+          <div class="card-body">
+          <h5 class="card-title">Bmw X5</h5>
+            <p class="card-text">Known for its blend of performance, comfort, and versatility.</p>
+            <p class="fw-bold">Price: 1.13 Crore</p>
+             <div class="mb-3">
+              <label>Choose Color:</label><br>
+              <button class="btn btn-outline-dark btn-sm me-2 bmw-color" data-color="black">Black</button>
+              <button class="btn btn-outline-primary btn-sm me-2 bmw-color" data-color="blue">Blue</button>
+              <button class="btn btn-outline-secondary btn-sm me-2 bmw-color" data-color="grey">Grey</button>
+              <button class="btn btn-outline-secondary btn-sm text-dark bmw-color" data-color="white">White</button>
+              
+            </div>
+            <button class="btn btn-primary w-100" id="bmwCart">Add To Cart</button>
+          </div>
+        </div>
+      </dv>
+    </div>
+  </div>
+
+
+<script>
+  const colorMap = {
+    mercedes: {
+      yellow: './assets/yellowmercedes.avif',
+      blue: './assets/bluemercedes.avif',
+      grey: './assets/whitemercedes (2).avif',
+      black: './assets/blackmercedes.avif'
+    },
+    audi: {
+      yellow: './assets/yellowaudi.webp',
+      blue: './assets/blueaudi.webp',
+      white: './assets/whiteaudi.webp' ,
+      grey: './assets/greyaudi.webp'
+    },
+    bmw: {
+      black: './assets/blackbmw.webp' ,
+      blue: './assets/bluebmw.webp' ,
+      white: './assets/whitebmw.webp' ,
+      grey: './assets/greybmw.webp'
+    }
+  };
+
+  let selectedColor = {
+    mercedes: 'white',
+    audi: 'yellow' ,
+    bmw: 'black'
+  };
+
+
+  document.querySelectorAll('.mercedes-color').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const color = btn.getAttribute('data-color');
+      selectedColor.mercedes = color;
+      document.getElementById('mercedesImg').src = colorMap.mercedes[color];
+    });
+  });
+
+
+  document.querySelectorAll('.audi-color').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const color = btn.getAttribute('data-color');
+      selectedColor.audi = color;
+      document.getElementById('audiImg').src = colorMap.audi[color];
+    });
+  });
+
+  document.querySelectorAll('.bmw-color').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const color =btn.getAttribute('data-color');
+      selectedColor.bmw =color;
+      document.getElementById('bmwImg').src = colorMap.bmw[color];
+    });
+  });
+
+  document.getElementById('mercedesCart').addEventListener('click', () => {
+    alert(`Mercedes-Benz AMG GT 63 added to cart with color: ${selectedColor.mercedes}`);
+  });
+
+  document.getElementById('audiCart').addEventListener('click', () => {
+    alert(`Audi R8 added to cart with color: ${selectedColor.audi}`);
+  });
+  document.getElementById('bmwCart').addEventListener('click',() => {
+     alert(`Bmw X5 added to cart with color: ${selectedColor.bmw}`);
+  });
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
